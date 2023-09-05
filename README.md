@@ -7,6 +7,6 @@
 <p> Install requirements "pip install -r requirements.txt" </p>
 
 
-<h3>Note<h3>
+<h3>Note</h3>
 <p> current corsheader allow requests from any domain, you can change that by modifying the 'ALLOWED ORIGIN ' in the settings.py file <p>
 <p> defaut jwt token configurations like token expiring time can also be modified in the settings.py file </p>
