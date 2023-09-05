@@ -1,10 +1,15 @@
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*7z15zrs8^-mi!ovygruz=hyjg4vkrihwgs(9unh$lc(4e^9^!'
+SECRET_KEY = 'django-insecure-%#fd)7*w00gm9w4ljux@70l+f3u58r*45g)puzkr)7)5xurxyp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -22,11 +27,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #my apps
-    'auth',
+    # my apps 
+    'users',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
-
 ]
 
 MIDDLEWARE = [
@@ -113,9 +117,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AUTH_USER_MODEL = 'auth.CustomUser'
-
-
 REST_FRAMEWORK = {
     
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -125,9 +126,13 @@ REST_FRAMEWORK = {
     
 }
 
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=20),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'UPDATE_LAST_LOGIN': True,
